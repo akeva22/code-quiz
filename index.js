@@ -19,46 +19,34 @@ startButtonEl.addEventListener('click', function handleClick() {
 
 
 const quiz = {
-    "name": "Psychology Quiz",
+    "name": "Code Quiz",
     "questions": [{
             "type": "single",
-            "question": "Which is not a step in the scientific method?",
-            "answers": ["Ask question", "Form hypothesis", "Replicate results", "Collect data", "Analysis"],
+            "question": "What kind of casing does JavaScript use?",
+            "answers": ["bamelCasing", "HippoCasing", "camelCasing", "eagleCasing"],
             "entered": [],
-            "correct": "Replicate results"
+            "correct": "camelCasing"
         },
         {
             "type": "single",
-            "question": "_____ explanations for aggressive behavior include genetic predisposition, high testosterone level and frontal lobe damage.",
-            "answers": ["Social", "Biological", "Cross-cultural", "Cognitive", "Psychoactive"],
+            "question": "What is the limit to the amount of functions you can place in a JavaScript Program",
+            "answers": ["None", "12", "18", "365", "14"],
             "entered": [],
-            "correct": "Biological"
+            "correct": "None"
         },
         {
             "type": "single",
-            "question": "Social identity refers to _____.",
-            "answers": ["Our membership in particular groups, which largely determines our everyday interactions", "Prejudices that are based on personal experiences that occur during development", "The drive for success that motivates people to form prejudices about their competitors", "All of the answers are correct."],
+            "question": "Jquery is used to ________",
+            "answers": ["Ask Questions about JavaScript", "Travese and Maniuplate the DOM in shorthand", "Create a new set of API's for use in JavaScript", "All of the answers are correct."],
             "entered": [],
-            "correct": "Replicate results"
+            "correct": "Travese and Maniuplate the DOM in shorthand"
         },
         {
             "type": "multiple",
-            "question": "The belief that everyone is good and naturally altruistic is an example of which psychological perspective?",
-            "answers": ["Biological", "Cognitive", "Behavioral", "Evolutionary", "Humanistic"],
+            "question": "What does the .this method do?",
+            "answers": ["Sheild the element from deafult behavior", "Refer to the object it belongs to", "create a variable to the value it is attached", "make things happen faster"],
             "entered": [],
-            "correct": "Humanistic"
-        },
-        {
-            "type": "short",
-            "question": "Please describe in two sentences or less what psychoanalysis is.",
-            "entered": [],
-            "answers": []
-        },
-        {
-            "type": "long",
-            "question": "In three paragraphs, describe Freud's theory of id, ego, and superego. Use examples as needed.",
-            "entered": [],
-            "answers": []
+            "correct": "Refer to the object it belongs to"
         }
     ]
 }
