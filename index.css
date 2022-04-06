@@ -149,6 +149,12 @@ div[contenteditable] {
     font-size: 19px;
 }
 
+.quiz-clock {
+    display: inline-block;
+    padding-left: 45%;
+    padding-right: 45%;
+}
+
 .quiz-page-template-container {
     background-color: #f1f9fa;
     padding: 0px;
@@ -211,7 +217,7 @@ div[contenteditable] {
 
 /* Added a "dynamic" width as a catch-all until a cleaner solution is implented for long questions/answers */
 .quiz-question-container {
-    display: inline-block;
+    display: none;
     text-align: left;
     width: 75%;
     position: relative;
@@ -419,6 +425,7 @@ div[contenteditable] {
 }
 
 .start-button {
+    display: inline-block;
     background-color: #bbe0e5;
     border-radius: 20px;
     border: 1px solid #ccc;

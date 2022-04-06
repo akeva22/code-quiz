@@ -1,20 +1,25 @@
 // Serve an object with this structure in order to generate a quiz page
 // The `correct` key is referential and should not be served
-var startButtonEl = document.querySelector("#start-button");
-// var quizEl = document.getElementById(".question-quiz-container")
+var startButtonEl = document.querySelector(".start-button");
 var questionsEl = document.getElementById('quiz-question-container');
-
 
 startButtonEl.addEventListener('click', function handleClick() {
   if (questionsEl.style.display === 'none') {
-    questionsEl.style.display = 'block';
+    questionsEl.style.display = 'inline-block';
 
-    btn.textContent = 'Hide element';
   } else {
-    questionsEl.style.display = 'none';
+    questionsEl.style.display = 'inline-block';
 
-    // startButtonEl.textContent = 'Show element';
+
+    startButtonEl.style.display = 'Show element';
   }
+
+  var start = Date.now();
+setInterval(function() {
+    var delta = Date.now() - start; // milliseconds elapsed since start
+    var timer = ((Math.floor(delta / 1000))); // in seconds
+    console.log(timer)
+}, 1000);
 });
 
 
