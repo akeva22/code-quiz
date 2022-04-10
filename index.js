@@ -2,60 +2,90 @@
 // The `correct` key is referential and should not be served
 var startButtonEl = document.querySelector(".start-button");
 var questionsEl = document.getElementById('quiz-question-container');
+var clockEl = document.getElementById('quiz-clock')
+var rightOrWrong = "";
 
 startButtonEl.addEventListener('click', function handleClick() {
-  if (questionsEl.style.display === 'none') {
-    questionsEl.style.display = 'inline-block';
+    if (questionsEl.style.display === 'none') {
+        questionsEl.style.display = 'inline-block';
 
-  } else {
-    questionsEl.style.display = 'inline-block';
+    } else {
+        questionsEl.style.display = 'inline-block';
 
 
-    startButtonEl.style.display = 'Show element';
-  }
+        startButtonEl.style.display = 'Show element';
 
-  var start = Date.now();
-setInterval(function() {
-    var delta = Date.now() - start; // milliseconds elapsed since start
-    var timer = ((Math.floor(delta / 1000))); // in seconds
-    console.log(timer)
-}, 1000);
+    }
+
+    function timer(seconds, cb) {
+        var remaningTime = seconds;
+        window.setTimeout(function () {
+            cb();
+           // console.log(remaningTime);
+            if (remaningTime > 0) {
+                timer(remaningTime - 1, cb);
+            }
+
+            if (rightOrWrong == 'wrong') {
+                console.log('butts');
+                timer(remaningTime - 10, cb);
+            }
+
+        }, 1000);
+        clockEl.innerText = remaningTime;
+
+    }
+
+  
+
+    var callback = function () {
+        //  console.log('callback');
+    };
+
+    timer(90, callback);
+
+
 });
+
+
+
+
 
 
 const quiz = {
     "name": "Code Quiz",
     "questions": [{
-            "type": "single",
-            "question": "What kind of casing does JavaScript use?",
-            "answers": ["bamelCasing", "HippoCasing", "camelCasing", "eagleCasing"],
-            "entered": [],
-            "correct": "camelCasing"
-        },
-        {
-            "type": "single",
-            "question": "What is the limit to the amount of functions you can place in a JavaScript Program",
-            "answers": ["None", "12", "18", "365", "14"],
-            "entered": [],
-            "correct": "None"
-        },
-        {
-            "type": "single",
-            "question": "Jquery is used to ________",
-            "answers": ["Ask Questions about JavaScript", "Travese and Maniuplate the DOM in shorthand", "Create a new set of API's for use in JavaScript", "All of the answers are correct."],
-            "entered": [],
-            "correct": "Travese and Maniuplate the DOM in shorthand"
-        },
-        {
-            "type": "multiple",
-            "question": "What does the .this method do?",
-            "answers": ["Sheild the element from deafult behavior", "Refer to the object it belongs to", "create a variable to the value it is attached", "make things happen faster"],
-            "entered": [],
-            "correct": "Refer to the object it belongs to"
-        }
-    ]
-}
+        "type": "single",
+        "question": "What kind of casing does JavaScript use?",
+        "answers": ["bamelCasing", "HippoCasing", "camelCasing", "eagleCasing"],
+        "entered": [],
+        "correct": "camelCasing"
+    },
+    {
+        "type": "single",
+        "question": "What is the limit to the amount of functions you can place in a JavaScript Program",
+        "answers": ["18", "12", "None", "365", "14"],
+        "entered": [],
+        "correct": "None"
+    },
+    {
+        "type": "single",
+        "question": "Jquery is used to ________",
+        "answers": ["Ask Questions about JavaScript", "Create new API's for JavaScript", "Travese and Maniuplate the DOM in shorthand", "All of the answers are correct."],
+        "entered": [],
+        "correct": "Travese and Maniuplate the DOM in shorthand"
+    },
+    {
+        "type": "multiple",
+        "question": "What does the .this method do?",
+        "answers": ["Sheild the element from deafult behavior", "Create a variable to the object its attached to", "Refer to the object it belongs to", "make things happen faster"],
+        "entered": [],
+        "correct": "Refer to the object it belongs to"
+    }
 
+    ]
+
+}
 
 
 // Tracks index of question on quiz
@@ -233,7 +263,7 @@ const cr_ContinueButton = () => {
     continueSPAN.id = `quiz-continue-text`
     continueBUTTON.innerHTML = `OK`
     // Moves to next question on click
-    continueBUTTON.onclick = function() {
+    continueBUTTON.onclick = function () {
         loadNewQuestion(`next-question-load`)
     }
     continueSPAN.innerHTML = `press ENTER`
@@ -432,6 +462,15 @@ const calculateQuizProgress = (questions) => {
 const ad_QuizSelectAnswer = (answer) => {
     answer.onclick = () => {
         selectAnswer(answer.id)
+
+        rightOrWrong = "";
+
+        if (answer.id == 67) {
+            rightOrWrong = 'right'
+        }
+        else {
+            rightOrWrong = 'wrong'
+        }
     }
 }
 
@@ -448,7 +487,7 @@ const ad_QuestionIteration = () => {
 }
 
 // Listener for key presses for quiz interaction.
-document.onkeydown = function(evt) {
+document.onkeydown = function (evt) {
     evt = evt || window.event;
     // console.log(evt.keyCode)
     // Registers key selectors for A to J on multiple choice questions.
@@ -465,7 +504,20 @@ document.onkeydown = function(evt) {
     }
 };
 
+
+function checkAnswer() {
+    console.log(quiz.questions[0].correct)
+    //  quiz.questions[1].correct,
+    //  quiz.questions[2].correct,
+    //  quiz.questions[3].correct)
+
+
+
+}
+
+console.log(quiz.questions[currentQuestionIndex])
+
 init()
 
-
+checkAnswer()
 
